@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="flex flex-col items-center md:items-start mb-10">
           <img 
-            src="/lovable-uploads/28f1b7b1-c507-4e4a-85fe-0a02f4e689f8.png" 
+            src="/lovable-uploads/0c6689f9-bc23-44b9-9df6-19a60e0bdaaf.png" 
             alt="Paula Santos Imóveis e Seguros" 
             className="h-32 md:h-40 mb-6"
           />
