@@ -100,13 +100,13 @@ const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-center md:text-left">Sua segurança é nossa prioridade desde 1970</p>
           <div className="flex items-center space-x-4 mt-2 md:mt-0">
-            <a href="tel:+551140028922" className="flex items-center hover:text-insurance-accent">
+            <a href="tel:+551532128080" className="flex items-center hover:text-insurance-accent">
               <Phone size={16} className="mr-1" />
-              <span>(11) 4002-8922</span>
+              <span>(15) 3212-8080</span>
             </a>
-            <a href="mailto:contato@paulasantosseguros.com.br" className="flex items-center hover:text-insurance-accent">
+            <a href="mailto:seguros@paulasantos.com.br" className="flex items-center hover:text-insurance-accent">
               <Mail size={16} className="mr-1" />
-              <span>contato@paulasantosseguros.com.br</span>
+              <span>seguros@paulasantos.com.br</span>
             </a>
           </div>
         </div>
