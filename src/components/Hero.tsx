@@ -15,12 +15,19 @@ const Hero: React.FC = () => {
         }}
       ></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div className="flex flex-col items-center md:items-start mb-10">
+          <img 
+            src="/lovable-uploads/28f1b7b1-c507-4e4a-85fe-0a02f4e689f8.png" 
+            alt="Paula Santos Imóveis e Seguros" 
+            className="h-32 md:h-40 mb-6"
+          />
+        </div>
         <div className="text-center md:text-left md:max-w-2xl animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-shadow">
             Protegemos o que é mais importante para você
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl">
-            Há mais de 15 anos oferecendo as melhores soluções em seguros para você e sua empresa. Conte com quem entende do assunto.
+            Desde 1970 oferecendo as melhores soluções em seguros para você e sua empresa. Conte com quem entende do assunto.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
             <Button className="bg-insurance-accent hover:bg-white hover:text-insurance-blue text-white px-8 py-6 text-lg transition-colors duration-300">

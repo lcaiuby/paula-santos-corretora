@@ -12,9 +12,11 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl md:text-3xl font-bold text-insurance-blue">
-                <span className="text-insurance-accent">Seguro</span> Brasileiro Digital
-              </h1>
+              <img 
+                src="/lovable-uploads/39c8bdd2-78ab-45e7-9a23-1553a9b73e49.png" 
+                alt="Paula Santos Imóveis e Seguros" 
+                className="h-10 md:h-12"
+              />
             </div>
           </div>
 
@@ -96,15 +98,15 @@ const Navbar: React.FC = () => {
       {/* Contact bar */}
       <div className="bg-insurance-blue text-white py-2 text-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-center md:text-left">Sua segurança é nossa prioridade</p>
+          <p className="text-center md:text-left">Sua segurança é nossa prioridade desde 1970</p>
           <div className="flex items-center space-x-4 mt-2 md:mt-0">
             <a href="tel:+551140028922" className="flex items-center hover:text-insurance-accent">
               <Phone size={16} className="mr-1" />
               <span>(11) 4002-8922</span>
             </a>
-            <a href="mailto:contato@segurobrasileiro.com.br" className="flex items-center hover:text-insurance-accent">
+            <a href="mailto:contato@paulasantosseguros.com.br" className="flex items-center hover:text-insurance-accent">
               <Mail size={16} className="mr-1" />
-              <span>contato@segurobrasileiro.com.br</span>
+              <span>contato@paulasantosseguros.com.br</span>
             </a>
           </div>
         </div>
