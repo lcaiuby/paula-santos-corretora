@@ -10,7 +10,7 @@ const AboutUs: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-insurance-blue">Sobre Nossa Corretora</h2>
           <div className="h-1 w-24 bg-insurance-accent mx-auto"></div>
           <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
-            A Seguro Brasileiro Digital é especializada em oferecer soluções personalizadas de seguros
+            A Paula Santos Corretora de Seguros é especializada em oferecer soluções personalizadas de seguros
             para proteger você, sua família e seu negócio. Nossa missão é proporcionar tranquilidade
             e segurança através de um atendimento diferenciado.
           </p>

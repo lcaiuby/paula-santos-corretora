@@ -8,10 +8,10 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">
-              <span className="text-insurance-accent">Seguro</span> Brasileiro Digital
+              <span className="text-insurance-accent">Paula Santos</span> Corretora de Seguros
             </h3>
             <p className="text-sm text-gray-300 max-w-xs">
-              Sua corretora de seguros de confiança, oferecendo as melhores soluções para você e sua empresa há mais de 15 anos.
+              Sua corretora de seguros de confiança, oferecendo as melhores soluções para você e sua empresa desde 1970.
             </p>
             <div className="mt-4 flex space-x-4">
               <a href="#" className="text-white hover:text-insurance-accent">
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
 
         <div className="mt-8 pt-8 border-t border-gray-700">
           <p className="text-sm text-gray-400 text-center">
-            &copy; {new Date().getFullYear()} Seguro Brasileiro Digital. Todos os direitos reservados. CNPJ: 00.000.000/0000-00
+            &copy; {new Date().getFullYear()} Paula Santos Corretora de Seguros. Todos os direitos reservados. CNPJ: 00.000.000/0000-00
           </p>
         </div>
       </div>
