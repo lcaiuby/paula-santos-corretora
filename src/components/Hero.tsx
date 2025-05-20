@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -23,10 +24,10 @@ const Hero: React.FC = () => {
         </div>
         <div className="text-center md:text-left md:max-w-2xl animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-shadow">
-            Protegemos o que é mais importante para você
+            Seguros para proteger o que é mais importante pra você
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl">
-            Desde 1970 oferecendo as melhores soluções em seguros para você e sua empresa. Conte com quem entende do assunto.
+            Oferecemos as melhores soluções em seguros para você e sua empresa. Conte com quem entende do assunto.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
             <Button className="bg-insurance-accent hover:bg-white hover:text-insurance-blue text-white px-8 py-6 text-lg transition-colors duration-300">
