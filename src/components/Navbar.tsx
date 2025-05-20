@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
             <div className="flex-shrink-0">
               <img 
                 src="/lovable-uploads/39c8bdd2-78ab-45e7-9a23-1553a9b73e49.png" 
-                alt="Paula Santos Imóveis e Seguros" 
+                alt="Paula Santos Corretora de Seguros" 
                 className="h-10 md:h-12"
               />
             </div>

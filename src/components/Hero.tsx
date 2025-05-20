@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -18,7 +17,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-col items-center md:items-start mb-10">
           <img 
             src="/lovable-uploads/0c6689f9-bc23-44b9-9df6-19a60e0bdaaf.png" 
-            alt="Paula Santos Imóveis e Seguros" 
+            alt="Paula Santos Corretora de Seguros" 
             className="h-32 md:h-40 mb-6"
           />
         </div>
