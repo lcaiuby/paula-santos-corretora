@@ -21,8 +21,8 @@ const InsuranceTypes: React.FC = () => {
       icon: <Shield className="h-10 w-10 text-insurance-blue" /> 
     },
     { 
-      title: "Plano de Saúde", 
-      description: "Cuidado com a sua saúde e de sua família com os melhores planos do mercado.",
+      title: "Seguro Pet", 
+      description: "Cuidado completo para seu animal de estimação, incluindo assistência veterinária.",
       icon: <Shield className="h-10 w-10 text-insurance-blue" /> 
     }
   ];

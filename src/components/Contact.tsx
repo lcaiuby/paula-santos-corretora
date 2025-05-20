@@ -47,8 +47,8 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="ml-4">
                   <h4 className="text-lg font-semibold">Endereço</h4>
-                  <p className="text-gray-600">Av. Paulista, 1000 - Bela Vista</p>
-                  <p className="text-gray-600">São Paulo - SP, 01310-100</p>
+                  <p className="text-gray-600">Av. Washington Luiz, 845 - Jardim Emília</p>
+                  <p className="text-gray-600">Sorocaba - SP, 18031-000</p>
                 </div>
               </div>
             </div>
