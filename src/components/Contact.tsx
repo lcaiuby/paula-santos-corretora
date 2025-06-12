@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -56,7 +57,6 @@ const Contact: React.FC = () => {
             <div className="mt-8">
               <h3 className="text-2xl font-bold mb-4 text-insurance-blue">Horário de Atendimento</h3>
               <p className="text-gray-600">Segunda à Sexta: 08:00 às 18:00</p>
-              <p className="text-gray-600">Sábados: 09:00 às 13:00</p>
             </div>
           </div>
 
@@ -110,3 +110,4 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+
