@@ -1,10 +1,9 @@
-
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin } from "lucide-react";
+import PDFBooklet from './PDFBooklet';
 
 const Contact: React.FC = () => {
   return (
@@ -16,6 +15,15 @@ const Contact: React.FC = () => {
           <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
             Estamos prontos para atender e tirar todas as suas dúvidas. Fale conosco e descubra a melhor solução para você.
           </p>
+        </div>
+
+        {/* Seção para download do catálogo */}
+        <div className="text-center mb-12 p-6 bg-gray-50 rounded-lg">
+          <h3 className="text-xl font-bold mb-4 text-insurance-blue">Catálogo Digital</h3>
+          <p className="text-gray-600 mb-6">
+            Baixe nosso catálogo completo em PDF com todas as informações sobre nossos serviços de seguros.
+          </p>
+          <PDFBooklet />
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -110,4 +118,3 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
-
