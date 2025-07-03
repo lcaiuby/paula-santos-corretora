@@ -10,8 +10,17 @@ const PDFBooklet: React.FC = () => {
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
     const margin = 20;
-    const lineHeight = 7;
     let currentY = margin;
+
+    // Cores do website
+    const colors = {
+      primary: [0, 93, 143], // #005D8F
+      accent: [255, 140, 41], // #FF8C29
+      darkBlue: [0, 63, 97], // #003F61
+      white: [255, 255, 255],
+      lightGray: [240, 240, 240],
+      darkGray: [60, 60, 60]
+    };
 
     // Função para adicionar nova página se necessário
     const checkPageBreak = (additionalHeight: number = 0) => {
@@ -21,120 +30,187 @@ const PDFBooklet: React.FC = () => {
       }
     };
 
-    // Função para adicionar texto com quebra de linha automática
-    const addText = (text: string, fontSize: number = 10, isBold: boolean = false, color: string = '#000000') => {
+    // Função para adicionar retângulo colorido
+    const addColoredRect = (x: number, y: number, width: number, height: number, color: number[]) => {
+      pdf.setFillColor(color[0], color[1], color[2]);
+      pdf.rect(x, y, width, height, 'F');
+    };
+
+    // Função para adicionar texto com estilo
+    const addStyledText = (
+      text: string, 
+      x: number, 
+      y: number, 
+      fontSize: number = 10, 
+      isBold: boolean = false, 
+      color: number[] = colors.darkGray,
+      align: 'left' | 'center' | 'right' = 'left'
+    ) => {
       pdf.setFontSize(fontSize);
       pdf.setFont('helvetica', isBold ? 'bold' : 'normal');
-      pdf.setTextColor(color);
+      pdf.setTextColor(color[0], color[1], color[2]);
+      
+      const alignOption = align === 'left' ? undefined : { align };
+      pdf.text(text, x, y, alignOption);
+    };
+
+    // Função para adicionar parágrafo com quebra de linha
+    const addParagraph = (text: string, fontSize: number = 10, color: number[] = colors.darkGray) => {
+      pdf.setFontSize(fontSize);
+      pdf.setTextColor(color[0], color[1], color[2]);
       
       const lines = pdf.splitTextToSize(text, pageWidth - 2 * margin);
+      const lineHeight = fontSize * 0.4;
       const textHeight = lines.length * lineHeight;
       
-      checkPageBreak(textHeight);
+      checkPageBreak(textHeight + 10);
       
       pdf.text(lines, margin, currentY);
-      currentY += textHeight + 5;
+      currentY += textHeight + 8;
     };
 
-    // Função para adicionar título de seção
-    const addSectionTitle = (title: string) => {
-      currentY += 10;
-      checkPageBreak(15);
-      pdf.setFontSize(16);
-      pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor('#005D8F');
-      pdf.text(title, margin, currentY);
-      currentY += 15;
+    // Função para adicionar título de seção com fundo colorido
+    const addSectionHeader = (title: string, bgColor: number[] = colors.primary) => {
+      checkPageBreak(25);
+      
+      // Fundo colorido para o título
+      addColoredRect(0, currentY - 5, pageWidth, 15, bgColor);
+      
+      // Texto do título
+      addStyledText(title, margin, currentY + 5, 14, true, colors.white);
+      
+      currentY += 20;
     };
 
-    // Capa
-    pdf.setFontSize(24);
-    pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor('#005D8F');
-    pdf.text('Paula Santos', pageWidth / 2, 60, { align: 'center' });
+    // Função para adicionar card de serviço
+    const addServiceCard = (title: string, description: string) => {
+      checkPageBreak(35);
+      
+      // Fundo do card
+      addColoredRect(margin - 5, currentY - 3, pageWidth - 2 * margin + 10, 25, colors.lightGray);
+      
+      // Título do serviço
+      addStyledText(title, margin, currentY + 5, 12, true, colors.primary);
+      
+      // Descrição
+      pdf.setFontSize(10);
+      pdf.setTextColor(colors.darkGray[0], colors.darkGray[1], colors.darkGray[2]);
+      const descLines = pdf.splitTextToSize(description, pageWidth - 2 * margin - 10);
+      pdf.text(descLines, margin, currentY + 12);
+      
+      currentY += 35;
+    };
+
+    // CAPA DO PDF
+    // Fundo azul da capa
+    addColoredRect(0, 0, pageWidth, 120, colors.primary);
     
-    pdf.setFontSize(20);
-    pdf.text('Corretora de Seguros', pageWidth / 2, 75, { align: 'center' });
+    // Título principal
+    addStyledText('Paula Santos', pageWidth / 2, 40, 28, true, colors.white, 'center');
+    addStyledText('Corretora de Seguros', pageWidth / 2, 55, 18, false, colors.white, 'center');
     
-    pdf.setFontSize(16);
-    pdf.setTextColor('#FF8C29');
-    pdf.text('Catálogo de Serviços', pageWidth / 2, 95, { align: 'center' });
+    // Faixa laranja
+    addColoredRect(0, 65, pageWidth, 15, colors.accent);
+    addStyledText('Catálogo de Serviços', pageWidth / 2, 75, 16, true, colors.white, 'center');
     
-    pdf.setFontSize(12);
-    pdf.setTextColor('#000000');
-    pdf.text('Seguros para proteger o que é mais importante pra você', pageWidth / 2, 120, { align: 'center' });
+    // Subtítulo
+    addStyledText('Seguros para proteger o que é mais importante pra você', 
+                  pageWidth / 2, 95, 12, false, colors.white, 'center');
+    
+    // Rodapé da capa
+    addColoredRect(0, 105, pageWidth, 15, colors.darkBlue);
+    addStyledText('Experiência • Confiança • Atendimento Personalizado', 
+                  pageWidth / 2, 115, 10, false, colors.white, 'center');
 
     // Nova página para conteúdo
     pdf.addPage();
     currentY = margin;
 
-    // Sobre nossa corretora
-    addSectionTitle('Sobre Nossa Corretora');
-    addText('A Paula Santos Corretora de Seguros é especializada em oferecer soluções personalizadas de seguros para proteger você, sua família e seu negócio. Nossa missão é proporcionar tranquilidade e segurança através de um atendimento diferenciado.');
+    // SOBRE A CORRETORA
+    addSectionHeader('Sobre Nossa Corretora');
     
-    addText('• Experiência e Confiança', 12, true);
-    addText('Mais de 15 anos no mercado oferecendo as melhores coberturas com o suporte que você precisa no momento em que mais importa.');
+    addParagraph('A Paula Santos Corretora de Seguros é especializada em oferecer soluções personalizadas de seguros para proteger você, sua família e seu negócio.', 11);
     
-    addText('• Atendimento Personalizado', 12, true);
-    addText('Entendemos que cada cliente tem necessidades únicas. Por isso, oferecemos soluções personalizadas para cada perfil.');
+    // Cards de diferenciais
+    addServiceCard('🏆 Experiência e Confiança', 
+                   'Mais de 15 anos no mercado oferecendo as melhores coberturas.');
     
-    addText('• Melhores Seguradoras', 12, true);
-    addText('Trabalhamos com as principais seguradoras do mercado para garantir o melhor custo-benefício para nossos clientes.');
+    addServiceCard('👥 Atendimento Personalizado', 
+                   'Soluções personalizadas para cada perfil e necessidade.');
+    
+    addServiceCard('🏢 Melhores Seguradoras', 
+                   'Parceria com as principais seguradoras do mercado.');
 
-    // Seguros para você
-    addSectionTitle('Seguros para Você');
+    // SEGUROS PARA VOCÊ
+    addSectionHeader('Seguros para Você', colors.accent);
     
-    addText('Seguro Auto', 12, true);
-    addText('Proteção completa para seu veículo contra roubos, acidentes e danos a terceiros.');
+    addServiceCard('🚗 Seguro Auto', 
+                   'Proteção completa para seu veículo contra roubos, acidentes e danos a terceiros.');
     
-    addText('Seguro Residencial', 12, true);
-    addText('Proteção para seu lar contra incêndios, roubos, danos elétricos e muito mais.');
+    addServiceCard('🏠 Seguro Residencial', 
+                   'Proteção para seu lar contra incêndios, roubos, danos elétricos e muito mais.');
     
-    addText('Seguro de Vida', 12, true);
-    addText('Tranquilidade para você e sua família em momentos difíceis.');
+    addServiceCard('❤️ Seguro de Vida', 
+                   'Tranquilidade para você e sua família em momentos difíceis.');
     
-    addText('Seguro Pet', 12, true);
-    addText('Cuidado completo para seu animal de estimação, incluindo assistência veterinária.');
+    addServiceCard('🐕 Seguro Pet', 
+                   'Cuidado completo para seu animal de estimação, incluindo assistência veterinária.');
 
-    // Seguros para empresas
-    addSectionTitle('Seguros para sua Empresa');
+    // SEGUROS EMPRESARIAIS
+    addSectionHeader('Seguros para sua Empresa');
     
-    addText('Seguro Empresarial', 12, true);
-    addText('Proteção completa para seu negócio contra incêndios, roubos e responsabilidade civil.');
+    addServiceCard('🏭 Seguro Empresarial', 
+                   'Proteção completa para seu negócio contra incêndios, roubos e responsabilidade civil.');
     
-    addText('Seguro de Responsabilidade Civil', 12, true);
-    addText('Proteção contra reclamações de terceiros por danos causados pela sua empresa.');
+    addServiceCard('⚖️ Responsabilidade Civil', 
+                   'Proteção contra reclamações de terceiros por danos causados pela sua empresa.');
     
-    addText('Seguro de Frota', 12, true);
-    addText('Proteção para os veículos da sua empresa, garantindo a continuidade do seu negócio.');
+    addServiceCard('🚛 Seguro de Frota', 
+                   'Proteção para os veículos da sua empresa, garantindo a continuidade do negócio.');
     
-    addText('Seguro de Vida em Grupo', 12, true);
-    addText('Benefício para seus colaboradores, demonstrando cuidado com o seu time.');
+    addServiceCard('👥 Seguro de Vida em Grupo', 
+                   'Benefício para seus colaboradores, demonstrando cuidado com o seu time.');
 
-    // Informações de contato
-    addSectionTitle('Entre em Contato');
+    // INFORMAÇÕES DE CONTATO
+    addSectionHeader('Entre em Contato', colors.accent);
     
-    addText('Estamos prontos para atender e tirar todas as suas dúvidas. Fale conosco e descubra a melhor solução para você.');
+    // Caixa de contato estilizada
+    addColoredRect(margin - 5, currentY - 3, pageWidth - 2 * margin + 10, 45, colors.lightGray);
     
-    addText('Telefone: (15) 3212-8080', 11, true);
-    addText('E-mail: seguros@paulasantos.com.br', 11, true);
-    addText('Endereço:', 11, true);
-    addText('Av. Washington Luiz, 845 - Jardim Emília');
-    addText('Sorocaba - SP, 18031-000');
+    addStyledText('📞 Telefone: (15) 3212-8080', margin, currentY + 8, 11, true, colors.primary);
+    addStyledText('✉️ E-mail: seguros@paulasantos.com.br', margin, currentY + 18, 11, true, colors.primary);
+    addStyledText('📍 Endereço:', margin, currentY + 28, 11, true, colors.primary);
+    addStyledText('Av. Washington Luiz, 845 - Jardim Emília', margin + 5, currentY + 35, 10, false, colors.darkGray);
+    addStyledText('Sorocaba - SP, 18031-000', margin + 5, currentY + 42, 10, false, colors.darkGray);
     
-    addText('Horário de Atendimento:', 11, true);
-    addText('Segunda à Sexta: 08:00 às 18:00');
+    currentY += 55;
+    
+    // Horário de atendimento
+    addColoredRect(margin - 5, currentY - 3, pageWidth - 2 * margin + 10, 15, colors.primary);
+    addStyledText('🕒 Horário: Segunda à Sexta: 08:00 às 18:00', margin, currentY + 5, 11, true, colors.white);
+    
+    currentY += 25;
 
-    // Seguradoras parceiras
-    addSectionTitle('Seguradoras Parceiras');
-    addText('Trabalhamos com as principais seguradoras do mercado para oferecer o melhor para você:');
-    addText('• Porto Seguro\n• Bradesco Seguros\n• SulAmérica\n• Allianz\n• Liberty Seguros\n• HDI Seguros');
+    // SEGURADORAS PARCEIRAS
+    addSectionHeader('Seguradoras Parceiras', colors.darkBlue);
+    
+    addParagraph('Trabalhamos com as principais seguradoras do mercado:', 11);
+    
+    const seguradoras = [
+      '• Porto Seguro', '• Bradesco Seguros', '• SulAmérica', 
+      '• Allianz', '• Liberty Seguros', '• HDI Seguros'
+    ];
+    
+    seguradoras.forEach(seguradora => {
+      addStyledText(seguradora, margin + 10, currentY, 10, false, colors.primary);
+      currentY += 6;
+    });
 
-    // Rodapé na última página
-    currentY = pageHeight - 30;
-    pdf.setFontSize(10);
-    pdf.setTextColor('#666666');
-    pdf.text(`© ${new Date().getFullYear()} Paula Santos Corretora de Seguros. Todos os direitos reservados.`, pageWidth / 2, currentY, { align: 'center' });
+    // RODAPÉ FINAL
+    currentY = pageHeight - 25;
+    addColoredRect(0, currentY - 5, pageWidth, 20, colors.primary);
+    addStyledText(`© ${new Date().getFullYear()} Paula Santos Corretora de Seguros. Todos os direitos reservados.`, 
+                  pageWidth / 2, currentY + 5, 9, false, colors.white, 'center');
 
     // Salvar o PDF
     pdf.save('Paula-Santos-Corretora-Seguros-Catalogo.pdf');
