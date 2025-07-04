@@ -33,8 +33,11 @@ const Navbar: React.FC = () => {
             <a href="#contato" className="text-gray-700 hover:text-insurance-blue px-3 py-2 font-medium">
               Contato
             </a>
-            <Button className="bg-insurance-accent hover:bg-insurance-blue text-white transition-colors duration-300">
-              Cotação Online
+            <Button 
+              className="bg-insurance-accent hover:bg-insurance-blue text-white transition-colors duration-300"
+              onClick={() => window.open('https://wa.me/551532128080?text=Quero%20falar%20sobre%20seguros', '_blank')}
+            >
+              Cotação via WhatsApp
             </Button>
           </div>
 
@@ -87,9 +90,12 @@ const Navbar: React.FC = () => {
             </a>
             <Button 
               className="w-full bg-insurance-accent hover:bg-insurance-blue text-white transition-colors duration-300 mt-3"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                window.open('https://wa.me/551532128080?text=Quero%20falar%20sobre%20seguros', '_blank');
+                setIsMenuOpen(false);
+              }}
             >
-              Cotação Online
+              Cotação via WhatsApp
             </Button>
           </div>
         </div>

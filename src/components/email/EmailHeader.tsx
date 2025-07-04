@@ -17,7 +17,10 @@ const EmailHeader: React.FC = () => {
         <p className="text-lg mb-6">
           Oferecemos as melhores soluções em seguros para você e sua empresa. Conte com quem entende do assunto.
         </p>
-        <Button className="bg-insurance-accent hover:bg-white hover:text-insurance-blue text-white px-8 py-3 text-lg">
+        <Button 
+          className="bg-insurance-accent hover:bg-white hover:text-insurance-blue text-white px-8 py-3 text-lg"
+          onClick={() => window.open('https://wa.me/551532128080?text=Quero%20falar%20sobre%20seguros', '_blank')}
+        >
           Solicite uma Cotação
         </Button>
       </div>

@@ -30,7 +30,10 @@ const Hero: React.FC = () => {
             Oferecemos as melhores soluções em seguros para você e sua empresa. Conte com quem entende do assunto.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button className="bg-insurance-accent hover:bg-white hover:text-insurance-blue text-white px-8 py-6 text-lg transition-colors duration-300">
+            <Button 
+              className="bg-insurance-accent hover:bg-white hover:text-insurance-blue text-white px-8 py-6 text-lg transition-colors duration-300"
+              onClick={() => window.open('https://wa.me/551532128080?text=Quero%20falar%20sobre%20seguros', '_blank')}
+            >
               Solicite uma Cotação
             </Button>
             <Button variant="outline" className="bg-transparent border-white hover:bg-white hover:text-insurance-blue text-white px-8 py-6 text-lg transition-colors duration-300">
