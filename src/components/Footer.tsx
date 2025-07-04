@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Facebook, Instagram, Mail, MapPin } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
@@ -61,24 +62,47 @@ const Footer: React.FC = () => {
               Trabalhamos com as principais seguradoras do mercado para oferecer o melhor para você.
             </p>
             <div className="grid grid-cols-3 gap-4">
-              {/* Placeholder para logos de seguradoras */}
-              <div className="bg-white p-2 rounded-md h-12 flex items-center justify-center">
-                <div className="text-insurance-blue text-xs font-bold">Porto</div>
+              <div className="bg-white p-3 rounded-md h-16 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/cc2f8322-02c5-45c3-a761-3ab6d0b4d6c7.png" 
+                  alt="Porto Seguro" 
+                  className="max-h-full max-w-full object-contain"
+                />
               </div>
-              <div className="bg-white p-2 rounded-md h-12 flex items-center justify-center">
-                <div className="text-insurance-blue text-xs font-bold">Bradesco</div>
+              <div className="bg-white p-3 rounded-md h-16 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/daa19e0c-f4f4-4e49-9e2a-65bea24000f6.png" 
+                  alt="Bradesco Seguros" 
+                  className="max-h-full max-w-full object-contain"
+                />
               </div>
-              <div className="bg-white p-2 rounded-md h-12 flex items-center justify-center">
-                <div className="text-insurance-blue text-xs font-bold">SulAmérica</div>
+              <div className="bg-white p-3 rounded-md h-16 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/7d5dd105-6c95-437d-a8ab-25b1fe7f3a34.png" 
+                  alt="Sura" 
+                  className="max-h-full max-w-full object-contain"
+                />
               </div>
-              <div className="bg-white p-2 rounded-md h-12 flex items-center justify-center">
-                <div className="text-insurance-blue text-xs font-bold">Allianz</div>
+              <div className="bg-white p-3 rounded-md h-16 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/e8858d6b-7649-44b0-b63d-baa80c30edf8.png" 
+                  alt="Allianz" 
+                  className="max-h-full max-w-full object-contain"
+                />
               </div>
-              <div className="bg-white p-2 rounded-md h-12 flex items-center justify-center">
-                <div className="text-insurance-blue text-xs font-bold">Liberty</div>
+              <div className="bg-white p-3 rounded-md h-16 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/ad3c9d82-71ce-423e-992d-dc70536ed9e1.png" 
+                  alt="Tokio Marine" 
+                  className="max-h-full max-w-full object-contain"
+                />
               </div>
-              <div className="bg-white p-2 rounded-md h-12 flex items-center justify-center">
-                <div className="text-insurance-blue text-xs font-bold">HDI</div>
+              <div className="bg-white p-3 rounded-md h-16 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/da3fe90c-6fd3-4f23-905c-8052fa45ec9c.png" 
+                  alt="Yelum Seguradora" 
+                  className="max-h-full max-w-full object-contain"
+                />
               </div>
             </div>
           </div>
@@ -86,7 +110,7 @@ const Footer: React.FC = () => {
 
         <div className="mt-8 pt-8 border-t border-gray-700">
           <p className="text-sm text-gray-400 text-center">
-            &copy; {new Date().getFullYear()} Paula Santos Corretora de Seguros. Todos os direitos reservados. CNPJ: 00.000.000/0000-00
+            &copy; {new Date().getFullYear()} Paula Santos Corretora de Seguros. Todos os direitos reservados. CNPJ: 54.340.567/0001-36
           </p>
         </div>
       </div>
